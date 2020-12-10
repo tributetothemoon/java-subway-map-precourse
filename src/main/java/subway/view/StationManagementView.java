@@ -2,22 +2,22 @@ package subway.view;
 
 import java.util.*;
 
-public class MainMenuView {
-    private static final String DISPLAY_NAME = "## 메인 화면";
-    private static final String STATION_MANAGEMENT = "역 관리";
-    private static final String LINE_MANAGEMENT = "노선 관리";
-    private static final String SECTION_MANAGEMENT = "구간 관리";
-    private static final String SUBWAY_MAP = "지하철 노선도 출력";
-    private static final String QUIT_MESSAGE = "Q. 종료";
+public class StationManagementView {
+    private static final String DISPLAY_NAME = "## 역 관리 화면";
+    private static final String CREATE = "역 등록";
+    private static final String DELETE = "역 삭제";
+    private static final String SEARCH = "역 조회";
+    private static final String BACK_MESSAGE = "B. 뒤로가기";
     private static final String INVALID_SELECTION = "선택할 수 없는 기능입니다.";
-    private static final char QUIT = 'Q';
-
+    private static final char BACK = 'B';
     private static final int MENU_START_RANGE = 1;
-    private static final int MENU_END_RANGE = 4;
+    private static final int MENU_END_RANGE = 3;
 
-    private static final List<String> mainMenu = new ArrayList<String>(Arrays.asList(
-            STATION_MANAGEMENT, LINE_MANAGEMENT, SECTION_MANAGEMENT, SUBWAY_MAP, QUIT_MESSAGE
+    private static final List<String> menu = new ArrayList<>(Arrays.asList(
+            CREATE, DELETE, SEARCH
     ));
+
+
 
     public static char getMenuSelection() {
         try {
@@ -31,7 +31,7 @@ public class MainMenuView {
     }
 
     private static boolean isValidMenu(char menu) {
-        if (menu == QUIT) {
+        if (menu == BACK) {
             return true;
         }
         int numericValue = Character.getNumericValue(menu);
@@ -43,11 +43,10 @@ public class MainMenuView {
 
     public static void showMenu() {
         System.out.println(DISPLAY_NAME);
-        Iterator<String> iterator = mainMenu.iterator();
-        for (int i = MENU_START_RANGE; i < mainMenu.size(); i++) {
+        Iterator<String> iterator = menu.iterator();
+        for(int i = MENU_START_RANGE; i <= menu.size(); i++) {
             System.out.println(String.format("%d. %s", i, iterator.next()));
         }
-        System.out.println(QUIT_MESSAGE);
+        System.out.println(BACK_MESSAGE);
     }
 }
-
