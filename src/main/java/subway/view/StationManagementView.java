@@ -17,8 +17,6 @@ public class StationManagementView {
             CREATE, DELETE, SEARCH
     ));
 
-
-
     public static char getMenuSelection() {
         try {
             char menu = InputView.getMenuSelection();

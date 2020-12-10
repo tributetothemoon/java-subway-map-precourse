@@ -19,7 +19,7 @@ public class Application {
     private static final String INVALID_SELECTION = "선택할 수 없는 기능입니다.";
 
     private static char menuType;
-    private static final StationManagement stationManagement = new StationManagement(new StationRepository());
+    private static final StationManagement stationManagement = new StationManagement();
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);

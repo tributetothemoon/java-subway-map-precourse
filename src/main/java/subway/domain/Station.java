@@ -12,4 +12,19 @@ public class Station {
     }
 
     // 추가 기능 구현
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Station paramObj = (Station) obj;
+        return this.name.equals(paramObj.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }

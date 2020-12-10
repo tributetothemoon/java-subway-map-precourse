@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class InputView {
     private static final String ERROR_NONE_INPUT_VALUE = "입력값이 없습니다.";
-    private static final String ERROR_INVALID_INPUT_VALUE = "유효하지 않은 입력입니다.";
     private static final String ERROR_INVALID_LENGTH = "유효하지 않은 길이입니다.";
     private static final String REQUEST_MENU = "## 원하는 기능을 선택하세요.";
+    private static final String REQUEST_STATION = "## 등록할 역 이름을 입력하세요.";
     private static final int ZERO = 0;
     private static final int ONE = 1;
 
@@ -40,6 +40,17 @@ public class InputView {
             throw new IllegalArgumentException(ERROR_NONE_INPUT_VALUE);
         }
         return true;
+    }
+
+    public static String getStationName() {
+        System.out.println(REQUEST_STATION);
+        try{
+            return getInputWithoutWhiteSpaces();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getStationName();
+        }
+
     }
 
 }
