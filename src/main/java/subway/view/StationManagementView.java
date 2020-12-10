@@ -23,7 +23,7 @@ public class StationManagementView {
             isValidMenu(menu);
             return menu;
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            OutputView.showErrorMessage(e);
             return getMenuSelection();
         }
     }

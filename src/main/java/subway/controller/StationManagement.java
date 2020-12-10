@@ -15,9 +15,6 @@ public class StationManagement {
     private static final char DELETE = '2';
     private static final char SEARCH = '3';
     private static final char BACK = 'B';
-    private static final String INVALID_SELECTION = "선택할 수 없는 기능입니다.";
-    private static final int MENU_START_RANGE = 1;
-    private static final int MENU_END_RANGE = 3;
 
     private List<Character> menuSelections = new ArrayList<>(Arrays.asList(
             CREATE, DELETE, SEARCH, BACK
@@ -32,6 +29,12 @@ public class StationManagement {
             if (menuType == CREATE) {
                 createStation();
             }
+            if (menuType == DELETE) {
+                deleteStation();
+            }
+            if (menuType == SEARCH) {
+                showStations();
+            }
         } while (menuType != BACK);
     }
 
@@ -45,4 +48,16 @@ public class StationManagement {
         }
     }
 
+    private void deleteStation() {
+        try {
+            String name = InputView.getStationName();
+            StationRepository.deleteStation(name);
+        } catch (IllegalArgumentException e) {
+            OutputView.showErrorMessage(e);
+        }
+    }
+
+    private void showStations() {
+        OutputView.showStations(StationRepository.stations());
+    }
 }
